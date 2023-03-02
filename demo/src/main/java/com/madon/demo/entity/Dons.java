@@ -2,10 +2,7 @@ package com.madon.demo.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,6 +18,8 @@ public class Dons {
     private String ref;
     private Double montant;
     private Date date;
-    /*private CompagneFonds compagneFonds;
-    private Donateur donateur;*/
+    @ManyToOne
+    private CompagneFonds compagneFonds;
+    @ManyToOne
+    private Donateur donateur;
 }

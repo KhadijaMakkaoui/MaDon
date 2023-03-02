@@ -1,13 +1,10 @@
 package com.madon.demo.entity;
 
 import lombok.*;
-import org.springframework.data.mapping.Association;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,7 +24,10 @@ public class CompagneFonds {
     private Float montantObjectif;
     private Float montantActuel;
     private int nbBeneficiaire;
-    /*private Association association;*/
+    @ManyToOne
+    private Association association;
+    @OneToMany(mappedBy = "compagneFonds",fetch = FetchType.LAZY)
+    private List<Dons> dons;
 
 
 }
