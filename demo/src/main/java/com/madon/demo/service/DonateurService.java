@@ -1,30 +1,33 @@
 package com.madon.demo.service;
 
 import com.madon.demo.entity.Donateur;
-import lombok.*;
+import com.madon.demo.repository.DonateurRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Service
 @NoArgsConstructor
-public class DonateurDto {
-    private Long id;
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String telephone;
-    private String email;
-    private String username;
+@AllArgsConstructor
+public class DonateurService {
+    private  DonateurRepository donateurRepository;
 
-    public static DonateurDto fromEntity(Donateur donateur) {
-        return new DonateurDto(
-                donateur.getId(),
-                donateur.getNom(),
-                donateur.getPrenom(),
-                donateur.getAdresse(),
-                donateur.getTelephone(),
-                donateur.getEmail(),
-                donateur.getUsername()
-        );
+    private Donateur createDonateur(Donateur donateur){
+        return donateurRepository.save(donateur);
     }
+    private Donateur updateDonateur(Donateur donateur){
+        return donateurRepository.save(donateur);
+    }
+    private void deleteDonateur(Long id){
+        donateurRepository.deleteById(id);
+    }
+
+    private Donateur getDonateur(Long id){
+        return donateurRepository.findById(id).get();
+    }
+
+
+
 }
