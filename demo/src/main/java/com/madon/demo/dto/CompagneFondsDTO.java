@@ -28,7 +28,7 @@ public class CompagneFondsDTO {
     private int nbBeneficiaire;
     private Association association;
     private List<Dons> dons;
-    static CompagneFondsDTO convertToDTO(CompagneFonds compagneFonds) {
+    public static CompagneFondsDTO convertToDTO(CompagneFonds compagneFonds) {
         return new CompagneFondsDTO(
                 compagneFonds.getId(),
                 compagneFonds.getRef(),
