@@ -16,7 +16,7 @@ public class DonateurDTO {
     private String email;
     private String username;
 
-    public static DonateurDTO fromEntity(Donateur donateur) {
+    public static DonateurDTO convertToDTO(Donateur donateur) {
         return new DonateurDTO(
                 donateur.getId(),
                 donateur.getNom(),
@@ -27,4 +27,5 @@ public class DonateurDTO {
                 donateur.getUsername()
         );
     }
+
 }
