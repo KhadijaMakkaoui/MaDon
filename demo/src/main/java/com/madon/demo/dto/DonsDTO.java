@@ -4,6 +4,7 @@ package com.madon.demo.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.madon.demo.entity.CompagneFonds;
 import com.madon.demo.entity.Donateur;
+import com.madon.demo.entity.Dons;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +24,14 @@ public class DonsDTO {
     private Date date;
     private CompagneFonds compagneFonds;
     private Donateur donateur;
-    static DonsDTO convertToDTO(DonsDTO donsDTO) {
+    public DonsDTO convertToDTO(Dons dons) {
         return new DonsDTO(
-                donsDTO.getId(),
-                donsDTO.getRef(),
-                donsDTO.getMontant(),
-                donsDTO.getDate(),
-                donsDTO.getCompagneFonds(),
-                donsDTO.getDonateur()
+                dons.getId(),
+                dons.getRef(),
+                dons.getMontant(),
+                dons.getDate(),
+                dons.getCompagneFonds(),
+                dons.getDonateur()
         );
     }
 }
