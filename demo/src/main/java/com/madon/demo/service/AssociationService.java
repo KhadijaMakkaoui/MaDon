@@ -5,14 +5,17 @@ import com.madon.demo.entity.Association;
 import com.madon.demo.repository.AssociationRepo;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @NoArgsConstructor
 @AllArgsConstructor
 public class AssociationService {
+    @Autowired
     private AssociationRepo associationRepo;
     private AssociationDTO associationDTO;
 
@@ -32,9 +35,11 @@ public class AssociationService {
     public Association getAssociationByRef(String ref){
         return associationRepo.findByRef(ref);
     }
-
+/*public List<Association> getAllAssociation(){
+        return associationRepo.findAll();
+    }*/
 
     public List<AssociationDTO> getAllAssociation() {
-        return associationRepo.findAll().stream().map((association -> new AssociationDTO())).collect(java.util.stream.Collectors.toList());
+        return associationRepo.findAll().stream().map((association -> associationDTO.convertToDTO(association))).collect(Collectors.toList());
     }
 }

@@ -19,7 +19,7 @@ public class AssociationController {
         return associationService.getAllAssociation();
     }
     @PostMapping
-    public Association createAssociation(Association association){
+    public Association createAssociation(@RequestBody Association association){
         return associationService.createAssociation(association);
     }
     @PostMapping("/update")

@@ -2,11 +2,13 @@ package com.madon.demo.dto;
 
 import com.madon.demo.entity.Donateur;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class DonateurDTO {
     private Long id;
     private String nom;

@@ -2,11 +2,13 @@ package com.madon.demo.dto;
 
 import com.madon.demo.entity.Association;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class AssociationDTO {
     private Long id;
     private String ref;
