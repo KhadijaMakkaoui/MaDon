@@ -4,10 +4,7 @@ import com.madon.demo.dto.DonsDTO;
 import com.madon.demo.entity.Dons;
 import com.madon.demo.service.DonsService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,11 +22,11 @@ public class DonsController {
         return donsService.getDons(id);
     }
     @PostMapping
-    public Dons createDons(Dons dons){
+    public Dons createDons(@RequestBody Dons dons){
         return donsService.createDons(dons);
     }
     @PostMapping("/update")
-    public Dons updateDons(Dons dons){
+    public Dons updateDons(@RequestBody Dons dons){
         return donsService.updateDons(dons);
     }
     @PostMapping("/delete")
