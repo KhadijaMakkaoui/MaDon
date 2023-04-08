@@ -3,6 +3,7 @@ import 'package:front_end/models/CompagneFonds.dart';
 import 'package:front_end/services/CompagneService.dart';
 
 import '../constants/colors.dart';
+import 'Details.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -91,34 +92,32 @@ class _HomeState extends State<Home> {
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '"Happiness doesn’t result from what we get, but from what we give"',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontStyle: FontStyle.italic,
-                            ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '"Happiness doesn’t result from what we get, but from what we give"',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontStyle: FontStyle.italic,
                           ),
-                          SizedBox(height: 8),
-                          Text(
-                            '- Ben Carson',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          '- Ben Carson',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -256,95 +255,99 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-Widget buildCompagne(CompagneFonds compagne) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      Padding(
-        padding: const EdgeInsets.all(0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Image.asset(
-            /*compagne.imagePath*/
-            'assets/iftar.jpg',
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
+  Widget buildCompagne(CompagneFonds compagne) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.asset(
+              /*compagne.imagePath*/
+              'assets/iftar.jpg',
+              height: 200,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
-      SizedBox(height: 10),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                compagne.titre,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-              'Number of beneficiaries:${compagne.nbBeneficiaire}',
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Amount to collect: ${compagne.montantObjectif} DH',
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Add your donation logic here
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: kPrimaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+        SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  compagne.titre,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Donate Now',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(width: 8),
-                    Icon(Icons.arrow_forward_ios, size: 24),
-                  ],
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
+                Text(
+                  'Number of beneficiaries:${compagne.nbBeneficiaire}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'Amount to collect: ${compagne.montantObjectif} DH',
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Details()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: kPrimaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Donate Now',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_ios, size: 24),
+                    ],
+                  ),
+                ),
 
-            ],
-          )
-        ],
-      ),
-      SizedBox(height: 20),
-    ],
-  );
+              ],
+            )
+          ],
+        ),
+        SizedBox(height: 20),
+      ],
+    );
+  }
 }
+
