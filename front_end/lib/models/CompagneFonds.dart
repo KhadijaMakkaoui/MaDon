@@ -1,25 +1,38 @@
+import 'dart:convert';
+
 class CompagneFonds{
   int id;
-  String nom;
+  String ref;
+  String titre;
   String description;
   String dateDebut;
   String dateFin;
-  String image;
-  String type;
-  String etat;
+  String imagePath;
+  int nbBeneficiaire;
+  double montantObjectif;
+  double montantActuel;
 
-  CompagneFonds(this.id, this.nom, this.description, this.dateDebut,
-      this.dateFin, this.image, this.type, this.etat);
-  static CompagneFonds fromJson(Map<String, dynamic> json) {
-    return CompagneFonds(
-      json['id'],
-      json['nom'],
-      json['description'],
-      json['dateDebut'],
-      json['dateFin'],
-      json['image'],
-      json['type'],
-      json['etat'],
-    );
-  }
+  CompagneFonds(
+      this.id,
+      this.ref,
+      this.titre,
+      this.description,
+      this.dateDebut,
+      this.dateFin,
+      this.imagePath,
+      this.nbBeneficiaire,
+      this.montantObjectif,
+      this.montantActuel);
+  CompagneFonds.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        ref = json['ref'],
+        titre = json['titre'],
+        description = json['description'],
+        dateDebut = json['dateDebut'],
+        dateFin = json['dateFin'],
+        imagePath = json['imagePath'],
+        nbBeneficiaire = json['nbBeneficiaire'],
+        montantObjectif = json['montantObjectif'],
+        montantActuel = json['montantActuel'];
+
 }
