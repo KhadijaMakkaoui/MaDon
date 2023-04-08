@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/constants/colors.dart';
+import 'package:front_end/screens/payment.dart';
 
 class Details extends StatefulWidget {
   const Details({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _DetailsState extends State<Details> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Details()),
+                              MaterialPageRoute(builder: (context) => Payment()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
