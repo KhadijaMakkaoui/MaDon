@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/models/CompagneFonds.dart';
+import 'package:front_end/services/CompagneService.dart';
 
 import '../constants/colors.dart';
 
@@ -10,6 +12,27 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late Future<List<CompagneFonds>> futureCompagneFonds;
+
+  @override
+  void initState() {
+    super.initState();
+    futureCompagneFonds= CompagneService().get('');
+  }
+/*
+  Future<List<CompagneFonds>> _getCompagneFonds() async {
+    var response = await CompagneService().get('');
+    debugPrint('success');
+
+    // parse the response into a list of Compagnes objects
+    List<CompagneFonds> compagneFonds =
+    (response as List).map((compagne) => CompagneFonds.fromJson(compagne)).toList();
+
+    return compagneFonds;
+  }
+*/
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +156,7 @@ class _HomeState extends State<Home> {
 */
                     },
                     child: Text(
-                      'View All',
+                      'View More',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -146,34 +169,34 @@ class _HomeState extends State<Home> {
               SizedBox(height: 20,),
               Container(
                 height: 450,
-                child: FutureBuilder<List<Restaurant>>(
-                    future: RestoService().getAllRestaurants(),
+                child: FutureBuilder<List<CompagneFonds>>(
+                    future: futureCompagneFonds,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        List<Restaurant> restos = snapshot.data!;
+                        List<CompagneFonds> comps = snapshot.data!;
 
                         return ListView.separated(
-                          itemCount: restos.length,
+                          itemCount: comps.length,
                           separatorBuilder: (BuildContext context, int index) =>
                               SizedBox(height: 16),
                           itemBuilder: (BuildContext context, int index) {
-                            Restaurant resto = restos[index];
+                            CompagneFonds comp = comps[index];
 
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
+                                /*Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         Menu(restaurantRef: resto),
                                   ),
-                                );
+                                );*/
                               },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   // restaurant details
-                                  buildRestaurant(resto),
+                                  buildCompagne(comp),
                                 ],
                               ),
                             );
@@ -234,7 +257,7 @@ class _HomeState extends State<Home> {
     );
   }
 }
-Widget buildRestaurant(Restaurant restaurant) {
+Widget buildCompagne(CompagneFonds compagne) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
@@ -243,7 +266,8 @@ Widget buildRestaurant(Restaurant restaurant) {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: Image.asset(
-            restaurant.logoUrl,
+            /*compagne.imagePath*/
+            'assets/iftar.jpg',
             height: 200,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -255,32 +279,69 @@ Widget buildRestaurant(Restaurant restaurant) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                restaurant.name,
-                style: TextStyle(
+                compagne.titre,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+              'Number of beneficiaries:${compagne.nbBeneficiaire}',
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Amount to collect: ${compagne.montantObjectif} DH',
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const SizedBox(
+                width: 15,
+              ),
             ],
           ),
-          Row(children: [
-            Text(
-              restaurant.waitTime,
-              style: const TextStyle(
-                fontSize: 18,
+          Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  // Add your donation logic here
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: kPrimaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Donate Now',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(width: 8),
+                    Icon(Icons.arrow_forward_ios, size: 24),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            const Icon(Icons.delivery_dining, color: kPrimaryColor),
-            const SizedBox(
-              width: 15,
-            ),
-          ]),
+
+            ],
+          )
         ],
       ),
       SizedBox(height: 20),
