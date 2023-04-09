@@ -94,18 +94,19 @@ class _HomeState extends State<Home> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: kBackground,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.symmetric(vertical: 10,horizontal:15),
+                    //QUOTE
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          '"Happiness doesn’t result from what we get, but from what we give"',
+                          '"Happiness doesn’t result from what we get,but\nfrom what we give"',
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
+                            color: Colors.black87,
+                            fontSize: 15,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
@@ -113,7 +114,7 @@ class _HomeState extends State<Home> {
                         Text(
                           '- Ben Carson',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black87,
                             fontSize: 16,
                           ),
                         ),
@@ -142,17 +143,17 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Recent Fundraisings Campaigns',
+                    'Fundraisings Campaigns',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  GestureDetector(
+                 /* GestureDetector(
                     onTap: () {
-/*
+*//*
                       Navigator.push(context, MaterialPageRoute(builder: (context) =>  Menu()));
-*/
+*//*
                     },
                     child: Text(
                       'View More',
@@ -162,7 +163,7 @@ class _HomeState extends State<Home> {
                         color: Colors.blue,
                       ),
                     ),
-                  ),
+                  ),*/
                 ],
               ),
               SizedBox(height: 20,),
@@ -282,7 +283,7 @@ class _HomeState extends State<Home> {
                 Text(
                   compagne.titre,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -290,9 +291,10 @@ class _HomeState extends State<Home> {
                   height: 10,
                 ),
                 Text(
-                  'Number of beneficiaries:${compagne.nbBeneficiaire}',
+                  'Number of beneficiaries:${compagne.nbBeneficiaire} people',
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
+                    color: Colors.grey,
                   ),
                 ),
                 const SizedBox(
@@ -301,7 +303,8 @@ class _HomeState extends State<Home> {
                 Text(
                   'Amount to collect: ${compagne.montantObjectif} DH',
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
+                    color: Colors.lightGreen,
                   ),
                 ),
                 const SizedBox(
@@ -318,7 +321,7 @@ class _HomeState extends State<Home> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Details()),
+                      MaterialPageRoute(builder: (context) => Details(campaignId: compagne.id,)),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -332,11 +335,11 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Donate Now',
+                        'Details',
                         style: TextStyle(fontSize: 18),
                       ),
                       SizedBox(width: 8),
-                      Icon(Icons.arrow_forward_ios, size: 24),
+                      Icon(Icons.arrow_forward_ios, size: 20),
                     ],
                   ),
                 ),
