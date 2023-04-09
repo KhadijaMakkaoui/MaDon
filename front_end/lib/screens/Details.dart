@@ -110,24 +110,56 @@ class _DetailsState extends State<Details> {
                           _title,
                           style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 16.0),
-                        LinearProgressIndicator(
-                          value: 40/100,
+                        SizedBox(height: 13.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 250.0,
+                              child: LinearProgressIndicator(
+                                value: _collected/_amount,
+                                valueColor: AlwaysStoppedAnimation<Color>(kBackground ),
+                                backgroundColor: kBackLight,
+                                minHeight: 15.0,
+
+                              ),
+
+                            ),
+                            Text(
+                              _collected-_amount>=0?'Completed':'${(_collected/_amount*100).toString()}%',
+                            )
+                          ],
                         ),
                         SizedBox(height: 8.0),
-                        Text(
-                          'Goal: $_amount DH',
-                          style: TextStyle(fontSize: 18.0),
+                        Row(
+                          children: [
+                            Text(
+                              'Goal: ',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                            Text(
+                              '$_amount DH',
+                              style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         SizedBox(height: 8.0),
-                        Text(
-                          'Amount Collected:$_collected DH',
-                          style: TextStyle(fontSize: 18.0),
+                        Row(
+                          children: [
+                            Text(
+                              'Collected: ',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                            Text(
+                              '$_collected DH',
+                              style: TextStyle(color:Colors.lightGreen,fontSize: 18.0,fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         SizedBox(height: 16.0),
                         Text(
                           _description,
-                          style: TextStyle(fontSize: 18.0),
+                          style: TextStyle(fontSize: 20.0),
                         ),
                       ],
                     ),
@@ -166,20 +198,20 @@ class _DetailsState extends State<Details> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'title',
+                                      'Association Al Khair',
                                       style: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: 20,
+                                        fontSize: 15,
                                       ),
                                     ),
                                     SizedBox(
                                       height: 10,
                                     ),
                                     Text(
-                                      'description',
+                                      'Based in Casablanca,we are looking for your help',
                                       style: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: 20,
+                                        fontSize: 10,
                                       ),
                                     ),
                                   ],
