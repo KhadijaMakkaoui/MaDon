@@ -16,7 +16,7 @@ public class Dons {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
-    private Double montant;
+    private double montant=0.0;
     private Date date;
     @ManyToOne
     private CompagneFonds compagneFonds;

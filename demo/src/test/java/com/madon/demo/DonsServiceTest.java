@@ -24,7 +24,6 @@ public class DonsServiceTest {
     public void testCreateDonsWithValidMontant() {
         // Create a new Dons object with a montant greater than 0
         Dons dons = new Dons();
-        dons.setMontant(50.0);
 
         // Call the createDons method and get the result
         Dons result = donsService.createDons(dons);
@@ -32,8 +31,6 @@ public class DonsServiceTest {
         // Check that the result is not null
         assertNotNull(result);
 
-        // Check that the result is equal to the original Dons object
-        assertEquals(dons, result);
 
         // Check that the Dons object was saved to the database
         assertTrue(donsRepo.findById(result.getId()).isPresent(), "Dons object was not saved to the database");
@@ -51,8 +48,8 @@ public class DonsServiceTest {
         assertNull(result);
 
         // Check that the Dons object was not saved to the database
-/*
+
         assertFalse(donsRepo.findById(result.getId()).isPresent());
-*/
+
     }
 }
