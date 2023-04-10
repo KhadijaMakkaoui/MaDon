@@ -126,7 +126,7 @@ class _DetailsState extends State<Details> {
 
                             ),
                             Text(
-                              _collected-_amount>=0?'Completed':'${(_collected/_amount*100).toString()}%',
+                              _collected-_amount>=0?'Completed':'${(_collected/_amount*100).toStringAsPrecision(2)}%',
                             )
                           ],
                         ),

@@ -86,6 +86,9 @@ class _PaymentState extends State<Payment> {
                 child: Column(
                   children: [
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
                       onPressed: () {
                         // Create a new Dons object with the desired properties
                         final Map<String, dynamic> body = {
@@ -99,6 +102,7 @@ class _PaymentState extends State<Payment> {
                             const SnackBar(
                               content: Text('Donation added successfully'),
                               duration: Duration(seconds: 2),
+                              backgroundColor: Colors.green,
                             ),
                           );
                         } catch (e) {
@@ -116,16 +120,19 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Icon(
-                                  Icons.attach_money,
-                                  color: Colors.grey,
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.attach_money,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -150,8 +157,11 @@ class _PaymentState extends State<Payment> {
                     const SizedBox(
                       height: 30,
                     ),
-                    GestureDetector(
-                      onTap: () async {
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () async {
                         // Create a new Dons object with the desired properties
                         final Map<String, dynamic> body = {
                           'montant': 100.00,
@@ -164,6 +174,7 @@ class _PaymentState extends State<Payment> {
                             const SnackBar(
                               content: Text('Donation added successfully'),
                               duration: Duration(seconds: 2),
+                              backgroundColor: Colors.green,
                             ),
                           );
                         } catch (e) {
@@ -181,16 +192,19 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Icon(
-                                  Icons.attach_money,
-                                  color: Colors.grey,
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.attach_money,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -215,8 +229,11 @@ class _PaymentState extends State<Payment> {
                     const SizedBox(
                       height: 30,
                     ),
-                    GestureDetector(
-                      onTap: () {
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () {
                         // Create a new Dons object with the desired properties
                         final Map<String, dynamic> body = {
                           'montant': 1000,
@@ -229,6 +246,7 @@ class _PaymentState extends State<Payment> {
                             const SnackBar(
                               content: Text('Donation added successfully'),
                               duration: Duration(seconds: 2),
+                              backgroundColor: Colors.green,
                             ),
                           );
                         } catch (e) {
@@ -246,16 +264,19 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Icon(
-                                  Icons.attach_money,
-                                  color: Colors.grey,
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.attach_money,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                               const SizedBox(

@@ -265,8 +265,7 @@ class _HomeState extends State<Home> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.asset(
-              /*compagne.imagePath*/
-              'assets/iftar.jpg',
+              compagne.imagePath,
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
