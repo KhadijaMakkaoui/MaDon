@@ -26,8 +26,11 @@ public class DonsService {
         dons.setRef(UUID.randomUUID().toString());
         dons.setDate(new Date());
         dons.setCompagneFonds(compagneFondsService.getCompagne((long) compagneId));
-        if(dons.getMontant()>0)
+        if(dons.getMontant()>0) {
+            dons.getCompagneFonds().setMontantActuel((float) (dons.getCompagneFonds().getMontantActuel() + dons.getMontant()));
+            compagneFondsService.updateCompagne(dons.getCompagneFonds());
             return donsRepo.save(dons);
+        }
         else
             return null;
     }
