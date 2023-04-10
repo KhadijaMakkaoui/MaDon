@@ -21,9 +21,9 @@ public class DonsController {
     public DonsDTO getDonsById(Long id){
         return donsService.getDons(id);
     }
-    @PostMapping
-    public Dons createDons(@RequestBody Dons dons){
-        return donsService.createDons(dons);
+    @PostMapping("{compagneId}")
+    public Dons createDons(@RequestBody Dons dons,@PathVariable int compagneId){
+        return donsService.createDons(dons,compagneId);
     }
     @PostMapping("/update")
     public Dons updateDons(@RequestBody Dons dons){

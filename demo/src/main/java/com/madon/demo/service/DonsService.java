@@ -3,9 +3,6 @@ package com.madon.demo.service;
 import com.madon.demo.dto.DonsDTO;
 import com.madon.demo.entity.Dons;
 import com.madon.demo.repository.DonsRepo;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +15,17 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class DonsService {
     private final DonsRepo donsRepo;
+    private final CompagneService compagneFondsService;
 
     @Autowired
-    public DonsService(DonsRepo donsRepo) {
+    public DonsService(DonsRepo donsRepo, CompagneService compagneFondsService) {
         this.donsRepo = donsRepo;
+        this.compagneFondsService = compagneFondsService;
     }
-    public Dons createDons(Dons dons){
+    public Dons createDons(Dons dons,int compagneId){
         dons.setRef(UUID.randomUUID().toString());
         dons.setDate(new Date());
-       /* double montant=double.parse(dons.getMontant());
-        dons.setMontant(montant);*/
+        dons.setCompagneFonds(compagneFondsService.getCompagne((long) compagneId));
         if(dons.getMontant()>0)
             return donsRepo.save(dons);
         else

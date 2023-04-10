@@ -26,7 +26,7 @@ public class DonsServiceTest {
         Dons dons = new Dons();
 
         // Call the createDons method and get the result
-        Dons result = donsService.createDons(dons);
+        Dons result = donsService.createDons(dons,1);
 
         // Check that the result is not null
         assertNotNull(result);
@@ -42,7 +42,7 @@ public class DonsServiceTest {
         dons.setMontant(0.0);
 
         // Call the createDons method and get the result
-        Dons result = donsService.createDons(dons);
+        Dons result = donsService.createDons(dons,2);
 
         // Check that the result is null
         assertNull(result);

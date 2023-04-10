@@ -1,5 +1,6 @@
 package com.madon.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class CompagneFonds {
     private int nbBeneficiaire;
     @ManyToOne
     private Association association;
+    @JsonIgnore
     @OneToMany(mappedBy = "compagneFonds",fetch = FetchType.LAZY)
     private List<Dons> dons;
 
