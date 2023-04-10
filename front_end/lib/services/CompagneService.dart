@@ -16,20 +16,13 @@ var client=http.Client();
      throw Exception('Failed to fetch data from the API');
    }
  }
-  //POST
-/*Future<dynamic> post(String api, Map<String, dynamic> body) async {
-    var url = Uri.parse(baseUrl + api);
-    var response = await http.post(
-      url,
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode(body),
-    );
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    } else {
-      throw Exception('Failed to post data to the API');
-    }
-  }*/
+
+  Future<CompagneFonds> fetchCampaignDetailsById(int id) async {
+    final List<CompagneFonds> campaigns = await CompagneService().get('');
+    final campaign = campaigns.firstWhere((c) => c.id ==id);
+    return campaign;
+  }
+
 }
 
 

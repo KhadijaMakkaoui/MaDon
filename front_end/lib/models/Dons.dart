@@ -1,15 +1,29 @@
-import 'package:flutter/material.dart';
-class Dons{
-  int id;
-  String ref;
-  double amount;
-  DateTime date;
+/*
+import 'package:intl/intl.dart';
+*/
 
-  Dons(this.id, this.ref, this.amount, this.date);
+class Dons {
+  /*int id;
+  String ref;*/
+  double montant;
+  /*String date;*/
 
-  Dons.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        ref = json['ref'],
-        amount = json['amount'],
-        date = json['date'];
+  Dons({required this.montant});
+
+  factory Dons.fromJson(Map<String, dynamic> json) => Dons(
+    montant: json['montant'],
+  );
+
+  Map<String, dynamic> toJson() => {
+   /* 'id': id,
+    'ref': ref,*/
+    'amount': montant,
+    /*'date': date,*/
+  };
+
+/*  static final DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
+
+  static String formatDate(DateTime dateTime) {
+    return _dateFormat.format(dateTime);
+  }*/
 }

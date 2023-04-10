@@ -18,7 +18,7 @@ var client=http.Client();
     }
   }
   //POST
-  Future<void> post(Dons don) async {
+  /*Future<void> post(Dons don) async {
     var url = Uri.parse(baseUrl);
     var headers = {'Content-Type': 'application/json'};
     var jsonDon = jsonEncode(don.toJson()); // use the toJson() method to encode the object
@@ -27,6 +27,19 @@ var client=http.Client();
       print('Donation added successfully');
     } else {
       throw Exception('Failed to add donation to the API');
+    }
+  }*/
+  Future<dynamic> post(Map<String, dynamic> body) async {
+    var url = Uri.parse(baseUrl);
+    var response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(body),
+    );
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to post data to the API');
     }
   }
 
