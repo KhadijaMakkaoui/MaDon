@@ -4,7 +4,8 @@ import '../models/Dons.dart';
 import '../services/DonsService.dart';
 
 class Payment extends StatefulWidget {
-  const Payment({Key? key}) : super(key: key);
+  final int campaignId;
+  const Payment({Key? key, required this.campaignId}) : super(key: key);
 
   @override
   State<Payment> createState() => _PaymentState();
@@ -93,10 +94,11 @@ class _PaymentState extends State<Payment> {
                         // Create a new Dons object with the desired properties
                         final Map<String, dynamic> body = {
                           'montant': 10.00,
+                          /*'compagneId': widget.campaignId,*/
                         };
                         // Call the post() method to add the new donation to the API
                         try {
-                          DonsService().post(body);
+                          DonsService().post(body, widget.campaignId);
                           // If the donation is added successfully, show a success message
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -168,7 +170,7 @@ class _PaymentState extends State<Payment> {
                         };
                         // Call the post() method to add the new donation to the API
                         try {
-                          DonsService().post(body);
+                          DonsService().post(body, widget.campaignId);
                           // If the donation is added successfully, show a success message
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -240,7 +242,7 @@ class _PaymentState extends State<Payment> {
                         };
                         // Call the post() method to add the new donation to the API
                         try {
-                          DonsService().post(body);
+                          DonsService().post(body, widget.campaignId);
                           // If the donation is added successfully, show a success message
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(

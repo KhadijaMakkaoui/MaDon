@@ -29,8 +29,8 @@ var client=http.Client();
       throw Exception('Failed to add donation to the API');
     }
   }*/
-  Future<dynamic> post(Map<String, dynamic> body) async {
-    var url = Uri.parse(baseUrl);
+  Future<dynamic> post(Map<String, dynamic> body,int compId) async {
+    var url = Uri.parse(baseUrl+'/'+compId.toString());
     var response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},

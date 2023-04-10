@@ -15,6 +15,7 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   late Future<CompagneFonds> compagneFonds=CompagneService().fetchCampaignDetailsById(widget.campaignId) ;
+  int _id=0;
   String _title='' ;
   String _description = '';
   String _imagePath = '';
@@ -82,6 +83,7 @@ class _DetailsState extends State<Details> {
                       _imagePath = snapshot.data!.imagePath;
                       _amount=snapshot.data!.montantObjectif;
                       _collected=snapshot.data!.montantActuel;
+                      _id=snapshot.data!.id;
                       /*_associationTitle = snapshot.data!.association!.titre;
                         _associationDescription = snapshot.data!.association!.description;*/
                     }
@@ -231,7 +233,7 @@ class _DetailsState extends State<Details> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Payment()),
+                              MaterialPageRoute(builder: (context) => Payment(campaignId:_id )),
                             );
                           },
                           style: ElevatedButton.styleFrom(
